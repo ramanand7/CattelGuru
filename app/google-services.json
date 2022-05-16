@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "871276110574",
+    "project_id": "whyapp-ddfd0",
+    "storage_bucket": "whyapp-ddfd0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:871276110574:android:2154d4fdab570cb07d09ff",
+        "android_client_info": {
+          "package_name": "com.cattelguru.shopping"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "871276110574-fg9nlkgiq2fehdhdbh6s0u8ks02kpkc3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7sMwmktnTCmN1BmNEekaMmAQXdn9l2P8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "871276110574-fg9nlkgiq2fehdhdbh6s0u8ks02kpkc3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
