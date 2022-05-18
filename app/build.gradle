@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.cattleguru.shopping"
+        applicationId "com.cattelguru.shopping"
         minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
