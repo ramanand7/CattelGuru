@@ -15,7 +15,7 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.Ekart.NoActionBar">
+    <style name="Theme.CattleGuru.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>

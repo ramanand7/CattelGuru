@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Ekart"
+        android:theme="@style/Theme.CattleGuru"
         tools:replace="android:theme">
         <activity android:name="com.cattleguru.shopping.HomeActivity"
 
