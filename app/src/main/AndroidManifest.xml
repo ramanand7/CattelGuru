@@ -14,21 +14,36 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ekart"
         tools:replace="android:theme">
-        <activity android:name="com.cattleguru.shopping.HomeActivity"
+        <activity
+            android:name=".SplashScreen"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
-        <activity android:name="com.cattleguru.shopping.SettinsActivity" />
-        <activity android:name="com.cattleguru.shopping.SearchProductsActivity" />
-        <activity android:name="com.cattleguru.shopping.RegisterActivity" />
-        <activity android:name="com.cattleguru.shopping.ProductDetailsActivity" />
-        <activity android:name="com.cattleguru.shopping.LoginActivity" />
-        <activity android:name="com.cattleguru.shopping.ConfirmFinalOrderActivity" />
-        <activity android:name="com.cattleguru.shopping.CartActivity" />
-        <activity android:name="com.cattleguru.shopping.AdminUserProductsActivity" />
-        <activity android:name="com.cattleguru.shopping.AdminNewOrdersActivity" />
-        <activity android:name="com.cattleguru.shopping.AdminCategoryActivity" />
-        <activity android:name="com.cattleguru.shopping.AdminAddNewProductActivity" />
-        <activity android:name="com.cattleguru.shopping.MainActivity">
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".afterjoinnow"
+            android:exported="false" />
+        <activity
+            android:name=".HomeActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".SettinsActivity" />
+        <activity android:name=".SearchProductsActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".ProductDetailsActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".ConfirmFinalOrderActivity" />
+        <activity android:name=".CartActivity" />
+        <activity android:name=".AdminUserProductsActivity" />
+        <activity android:name=".AdminNewOrdersActivity" />
+        <activity android:name=".AdminCategoryActivity" />
+        <activity android:name=".AdminAddNewProductActivity" />
+        <activity android:name=".manageotp" />
+        <activity android:name=".MainActivity"
+            android:theme="@style/Theme.Design.NoActionBar"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
