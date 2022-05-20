@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -22,6 +23,8 @@ import com.hbb20.CountryCodePicker;
 
 import java.util.HashMap;
 
+import io.paperdb.Paper;
+
 public class afterjoinnow extends AppCompatActivity {
 
     CountryCodePicker ccp;
@@ -30,7 +33,17 @@ public class afterjoinnow extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_afterjoinnow);
+
+        Paper.init(this);
+        try
+        {
+            this.getSupportActionBar().hide();
+        }
+        catch (NullPointerException e){}
+
         t1=(EditText)findViewById(R.id.t1);
         ccp=(CountryCodePicker)findViewById(R.id.ccp);
         ccp.registerCarrierNumberEditText(t1);
