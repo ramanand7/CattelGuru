@@ -2,9 +2,7 @@ package com.cattleguru.shopping;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-
 import android.os.Bundle;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,17 +25,21 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-public class AdminNewOrdersActivity extends AppCompatActivity {
+public class AdminShippedOrdersActivity extends AppCompatActivity {
     private RecyclerView ordersList;
     private Query ordersQuery;
     private DatabaseReference ordersRef ;
+    private TextView status ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_new_orders);
-        ordersQuery = FirebaseDatabase.getInstance().getReference().child("Orders").orderByChild("state").equalTo("Not Shipped");
+        ordersQuery = FirebaseDatabase.getInstance().getReference().child("Orders").orderByChild("state").equalTo("Shipped");
         ordersList = findViewById(R.id.orders_list);
         ordersList.setLayoutManager(new LinearLayoutManager(this));
+
+        status = findViewById(R.id.status);
+        status.setText("Cancelled");
     }
 
     @Override
@@ -62,44 +64,9 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
                             @Override
                             public void onClick(View view) {
                                 String uID = getRef(position).getKey();
-                                Intent intent = new Intent(AdminNewOrdersActivity.this,AdminUserProductsActivity.class);
+                                Intent intent = new Intent(AdminShippedOrdersActivity.this,AdminUserProductsActivity.class);
                                 intent.putExtra("uid",uID);
                                 startActivity(intent);
-                            }
-                        });
-
-                        holder.itemView.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-
-                                CharSequence options[] =new CharSequence[]{
-                                        "Yes",
-                                        "No",
-                                        "Cancel this Order"
-
-                                };
-
-                                AlertDialog.Builder builder = new AlertDialog.Builder(AdminNewOrdersActivity.this);
-                                builder.setTitle("Have you shipped this order products?");
-                                builder.setItems(options, new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        if (i==0){
-                                            String uID = getRef(position).getKey();
-                                            OrderShipped(uID);
-
-                                        }
-                                        else if(i==2){
-                                            String uID = getRef(position).getKey();
-                                            CancelOrder(uID);
-                                        }
-                                        else {
-                                            finish();
-                                        }
-
-                                    }
-                                });
-                                builder.show();
                             }
                         });
 
@@ -117,8 +84,6 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
 
     }
 
-
-
     public static class AdminOrdersViewHolder extends RecyclerView.ViewHolder{
 
         public TextView userName, userPhoneNumber,userTotalPrice,userDateTime,userShippingAddress;
@@ -132,29 +97,5 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
             userShippingAddress = itemView.findViewById(R.id.order_address_city);
             showOrdersBtn = itemView.findViewById(R.id.show_all_product_btn);
         }
-    }
-    private void OrderShipped(String uID) {
-        ordersRef.child(uID).child("state").setValue("Shipped").addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
-                    Toast.makeText(AdminNewOrdersActivity.this,"Order status changed to shipped.",Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(AdminNewOrdersActivity.this,HomeActivity.class);
-                    startActivity(intent);
-                }
-            }
-        });;
-    }
-    private void CancelOrder(String uID) {
-        ordersRef.child(uID).child("state").setValue("Cancelled").addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
-                    Toast.makeText(AdminNewOrdersActivity.this,"Order Cancelled",Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(AdminNewOrdersActivity.this,HomeActivity.class);
-                    startActivity(intent);
-                }
-            }
-        });;
     }
 }

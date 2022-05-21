@@ -38,6 +38,8 @@
         <activity android:name=".CartActivity" />
         <activity android:name=".AdminUserProductsActivity" />
         <activity android:name=".AdminNewOrdersActivity" />
+        <activity android:name=".AdminCancelledOrdersActivity" />
+        <activity android:name=".AdminShippedOrdersActivity" />
         <activity android:name=".AdminCategoryActivity" />
         <activity android:name=".AdminAddNewProductActivity" />
         <activity android:name=".manageotp" />

@@ -13,7 +13,7 @@ public class AdminCategoryActivity extends AppCompatActivity {
     private ImageView tShirts, sportsTShirts, femaleDresses, sweathers;
     private ImageView glasses, hatsCaps, walletsBagsPurses, shoes;
     private ImageView headPhonesHandFree, Laptops, watches, mobilePhones;
-    private Button LogoutBtn, CheckOrdersBtn;
+    private Button LogoutBtn, CheckNewOrdersBtn, CheckShippedOrdersBtn , CheckCancelledOrdersBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +30,10 @@ public class AdminCategoryActivity extends AppCompatActivity {
                 finish();
             }
         });
-        CheckOrdersBtn = (Button) findViewById(R.id.check_orders_btn);
+        CheckNewOrdersBtn = (Button) findViewById(R.id.check_orders_btn);
 
 
-        CheckOrdersBtn.setOnClickListener(new View.OnClickListener() {
+        CheckNewOrdersBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(AdminCategoryActivity.this,AdminNewOrdersActivity.class);
@@ -41,7 +41,27 @@ public class AdminCategoryActivity extends AppCompatActivity {
             }
         });
 
+        CheckShippedOrdersBtn = (Button) findViewById(R.id.check_shipped_orders_btn);
 
+
+        CheckShippedOrdersBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(AdminCategoryActivity.this,AdminShippedOrdersActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        CheckCancelledOrdersBtn = (Button) findViewById(R.id.check_cancelled_orders_btn);
+
+
+        CheckCancelledOrdersBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(AdminCategoryActivity.this,AdminCancelledOrdersActivity.class);
+                startActivity(intent);
+            }
+        });
 
         tShirts = (ImageView) findViewById(R.id.t_shirts);
         sportsTShirts = (ImageView) findViewById(R.id.sports_t_shirts);
