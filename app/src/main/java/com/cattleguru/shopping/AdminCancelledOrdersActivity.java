@@ -38,7 +38,7 @@ public class AdminCancelledOrdersActivity extends AppCompatActivity {
         ordersList = findViewById(R.id.orders_list);
         ordersList.setLayoutManager(new LinearLayoutManager(this));
         status = findViewById(R.id.status);
-        status.setText("Cancelled");
+        status.setText("Cancelled Orders");
     }
 
     @Override

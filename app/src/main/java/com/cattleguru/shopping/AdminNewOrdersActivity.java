@@ -35,6 +35,7 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_new_orders);
+        ordersRef = FirebaseDatabase.getInstance().getReference().child("Orders");
         ordersQuery = FirebaseDatabase.getInstance().getReference().child("Orders").orderByChild("state").equalTo("Not Shipped");
         ordersList = findViewById(R.id.orders_list);
         ordersList.setLayoutManager(new LinearLayoutManager(this));
