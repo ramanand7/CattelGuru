@@ -49,14 +49,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         addToCartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                if (state.equals("Order Placed") || state.equals("Order Shipped")){
-                    Toast.makeText(ProductDetailsActivity.this,"You can add Purchase more product, once your order is shipped or confirmed",Toast.LENGTH_LONG).show();
-                }
-                else
-                {
-                    addingToCartList();
-                }
+                addingToCartList();
             }
         });
     }
@@ -143,10 +136,13 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 if (dataSnapshot.exists()){
                     String shippingState = dataSnapshot.child("state").getValue().toString();
                     if (shippingState.equals("Shipped")){
-                        state ="Order Shipped";
+                        state ="Shipped";
                     }
                     else if (shippingState.equals("Not Shipped")){
-                        state ="Order Placed";
+                        state ="Not Shipped";
+                    }
+                    else {
+                        state = "Cancelled";
                     }
                 }
             }

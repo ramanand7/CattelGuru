@@ -51,11 +51,17 @@ public class CartActivity extends AppCompatActivity{
         NextProcessBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                txtTotalAmount.setText("Total Price = Rs."+String.valueOf(overTotalPrice));
-                Intent intent = new Intent(CartActivity.this,ConfirmFinalOrderActivity.class);
-                intent.putExtra("Total Price", String.valueOf(overTotalPrice));
-                startActivity(intent);
-                finish();
+                if(overTotalPrice == 0) {
+                    txtMsg1.setText("Your Cart is Empty. Please add some items to your Cart");
+                    NextProcessBtn.setVisibility(View.GONE);
+                }
+                else {
+                    txtTotalAmount.setText("Total Price = Rs." + String.valueOf(overTotalPrice));
+                    Intent intent = new Intent(CartActivity.this, ConfirmFinalOrderActivity.class);
+                    intent.putExtra("Total Price", String.valueOf(overTotalPrice));
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
 
@@ -79,6 +85,7 @@ public class CartActivity extends AppCompatActivity{
                 holder.txtProductName.setText(model.getPname());
                 int oneTyprProductTPrice = ((Integer.valueOf(model.getPrice())))* Integer.valueOf(model.getQuantity());
                 overTotalPrice = overTotalPrice + oneTyprProductTPrice;
+                txtTotalAmount.setText("Total Price = " + overTotalPrice);
 
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -144,20 +151,24 @@ public class CartActivity extends AppCompatActivity{
                     String shippingState = dataSnapshot.child("state").getValue().toString();
                     String userName = dataSnapshot.child("name").getValue().toString();
                     if (shippingState.equals("Shipped")){
-                        txtTotalAmount.setText("TDear "+userName+"\n order is shipped successfully.");
-                        recyclerView.setVisibility(View.GONE);
+                        txtTotalAmount.setText("Total Price = "+ overTotalPrice);
+                        //recyclerView.setVisibility(View.GONE);
                         txtMsg1.setVisibility(View.VISIBLE);
-                        txtMsg1.setText("Congratulations, Your Final order has been shipped successfully. Soon you will received your order at your door step.");
-                        NextProcessBtn.setVisibility(View.GONE);
-                        Toast.makeText(CartActivity.this,"You can purchase more products, Once you received your first order",Toast.LENGTH_SHORT).show();
+                        txtMsg1.setText("Dear "+userName+"\n ,Your last order was delivered successfully.");
                     }
                     else if (shippingState.equals("Not Shipped")){
                         txtTotalAmount.setText("Shipping State = Not Shipped");
-                        recyclerView.setVisibility(View.GONE);
+                        //recyclerView.setVisibility(View.GONE);
                         txtMsg1.setVisibility(View.VISIBLE);
-
+                        txtMsg1.setText("You can purchase more products, once you have received your order");
                         NextProcessBtn.setVisibility(View.GONE);
-                        Toast.makeText(CartActivity.this,"You can purchase more products, Once you received your first order",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CartActivity.this,"You can purchase more products, once you have received your order",Toast.LENGTH_SHORT).show();
+                    }
+                    else if (shippingState.equals("Cancelled")){
+                        txtTotalAmount.setText("Total Price = " + overTotalPrice);
+                        txtMsg1.setText("Your last order was cancelled");
+                        //recyclerView.setVisibility(View.GONE);
+                        txtMsg1.setVisibility(View.VISIBLE);
                     }
                 }
             }
