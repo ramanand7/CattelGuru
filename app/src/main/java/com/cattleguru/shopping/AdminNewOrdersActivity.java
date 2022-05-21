@@ -140,7 +140,7 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()){
                     Toast.makeText(AdminNewOrdersActivity.this,"Order status changed to shipped.",Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(AdminNewOrdersActivity.this,HomeActivity.class);
+                    Intent intent = new Intent(AdminNewOrdersActivity.this,AdminCategoryActivity.class);
                     startActivity(intent);
                 }
             }
@@ -152,7 +152,7 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()){
                     Toast.makeText(AdminNewOrdersActivity.this,"Order Cancelled",Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(AdminNewOrdersActivity.this,HomeActivity.class);
+                    Intent intent = new Intent(AdminNewOrdersActivity.this,AdminCancelledOrdersActivity.class);
                     startActivity(intent);
                 }
             }
