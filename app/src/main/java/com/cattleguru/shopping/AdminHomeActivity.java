@@ -3,25 +3,27 @@ package com.cattleguru.shopping;
 
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.view.View;
 import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class AdminCategoryActivity extends AppCompatActivity {
+import io.paperdb.Paper;
+
+public class AdminHomeActivity extends AppCompatActivity {
     private Button LogoutBtn, CheckNewOrdersBtn, CheckShippedOrdersBtn , CheckCancelledOrdersBtn, addNewProductBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_category);
+        setContentView(R.layout.activity_admin_home);
 
         LogoutBtn = (Button) findViewById(R.id.admin_logout_btn);
         LogoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(AdminCategoryActivity.this,MainActivity.class);
+                Paper.book().destroy();
+                Intent intent= new Intent(AdminHomeActivity.this,MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();
@@ -33,7 +35,7 @@ public class AdminCategoryActivity extends AppCompatActivity {
         CheckNewOrdersBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(AdminCategoryActivity.this,AdminNewOrdersActivity.class);
+                Intent intent= new Intent(AdminHomeActivity.this,AdminNewOrdersActivity.class);
                 startActivity(intent);
             }
         });
@@ -44,7 +46,7 @@ public class AdminCategoryActivity extends AppCompatActivity {
         CheckShippedOrdersBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(AdminCategoryActivity.this,AdminShippedOrdersActivity.class);
+                Intent intent= new Intent(AdminHomeActivity.this,AdminShippedOrdersActivity.class);
                 startActivity(intent);
             }
         });
@@ -55,7 +57,7 @@ public class AdminCategoryActivity extends AppCompatActivity {
         CheckCancelledOrdersBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(AdminCategoryActivity.this,AdminCancelledOrdersActivity.class);
+                Intent intent= new Intent(AdminHomeActivity.this,AdminCancelledOrdersActivity.class);
                 startActivity(intent);
             }
         });
@@ -67,7 +69,7 @@ public class AdminCategoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                Intent intent = new Intent(AdminCategoryActivity.this, com.cattleguru.shopping.AdminAddNewProductActivity.class);
+                Intent intent = new Intent(AdminHomeActivity.this, com.cattleguru.shopping.AdminAddNewProductActivity.class);
                 intent.putExtra("category", "Some Material");
                 startActivity(intent);
             }

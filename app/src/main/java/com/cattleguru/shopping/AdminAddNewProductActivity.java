@@ -206,7 +206,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
                     {
                         if (task.isSuccessful())
                         {
-                            Intent intent = new Intent(AdminAddNewProductActivity.this, AdminCategoryActivity.class);
+                            Intent intent = new Intent(AdminAddNewProductActivity.this, AdminHomeActivity.class);
                             startActivity(intent);
 
                             loadingBar.dismiss();

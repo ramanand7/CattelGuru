@@ -34,7 +34,7 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_new_orders);
+        setContentView(R.layout.activity_admin_orders);
         ordersRef = FirebaseDatabase.getInstance().getReference().child("Orders");
         ordersQuery = FirebaseDatabase.getInstance().getReference().child("Orders").orderByChild("state").equalTo("Not Shipped");
         ordersList = findViewById(R.id.orders_list);
@@ -140,7 +140,7 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()){
                     Toast.makeText(AdminNewOrdersActivity.this,"Order status changed to shipped.",Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(AdminNewOrdersActivity.this,AdminCategoryActivity.class);
+                    Intent intent = new Intent(AdminNewOrdersActivity.this, AdminHomeActivity.class);
                     startActivity(intent);
                 }
             }
