@@ -81,5 +81,16 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
     implementation 'com.razorpay:checkout:1.6.19'
+
+    implementation 'com.karumi:dexter:6.2.1'
+
+    implementation "androidx.cardview:cardview:1.0.0"
+
+    compile 'com.google.android.exoplayer:exoplayer:r2.4.0'
+    compile 'com.google.android.exoplayer:exoplayer-core:r2.4.0'
+    compile 'com.google.android.exoplayer:exoplayer-dash:r2.4.0'
+    compile 'com.google.android.exoplayer:exoplayer-hls:r2.4.0'
+    compile 'com.google.android.exoplayer:exoplayer-smoothstreaming:r2.4.0'
+    compile 'com.google.android.exoplayer:exoplayer-ui:r2.4.0'
 }
 apply plugin: 'com.google.gms.google-services'

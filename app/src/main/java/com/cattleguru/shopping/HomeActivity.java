@@ -10,13 +10,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.widget.Toolbar;
 
 import com.cattleguru.shopping.Model.Products;
@@ -41,6 +46,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     TextView textView;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
+    ImageButton phonebutn;
+    ImageButton whatbutton;
+    ImageButton vidbutn;
+    RecyclerView recview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +60,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         drawerLayout=findViewById(R.id.drawer_layout);
         navigationView=findViewById(R.id.nav_view);
+        phonebutn = findViewById(R.id.phonebutton);
+        whatbutton = findViewById(R.id.whatsappbutton);
         toolbar=findViewById(R.id.toolbar);
+        vidbutn = findViewById(R.id.vid);
         androidx.appcompat.widget.Toolbar toolbar = (androidx.appcompat.widget.Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Cattle GURU");
         setSupportActionBar(toolbar);
@@ -61,6 +73,41 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+        phonebutn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(HomeActivity.this, "call and book your Order", Toast.LENGTH_SHORT).show();
+                String phone = "+91 8929569735";
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null));
+                startActivity(intent);
+            }
+        });
+        whatbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(HomeActivity.this, "message and book your order", Toast.LENGTH_SHORT).show();
+                String contact = "+91 8929569735"; // use country code with your phone number
+                String url = "https://api.whatsapp.com/send?phone=" + contact;
+                try {
+                    PackageManager pm = getPackageManager();
+                    pm.getPackageInfo("com.whatsapp", PackageManager.GET_ACTIVITIES);
+                    Intent i = new Intent(Intent.ACTION_VIEW);
+                    i.setData(Uri.parse(url));
+                    startActivity(i);
+                } catch (PackageManager.NameNotFoundException e) {
+                    Toast.makeText(HomeActivity.this, "Whatsapp app not installed in your phone", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+            }
+        });
+        vidbutn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this,videoactivity.class);
+                startActivity(intent);
+            }
+        });
+
 
 
         View headerView = navigationView.getHeaderView(0);
