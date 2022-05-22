@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Ekart"
         tools:replace="android:theme">
         <activity
+            android:name=".videoactivity"
+            android:exported="false" />
+        <activity
             android:name=".SplashScreen"
             android:exported="true">
             <intent-filter>
@@ -43,9 +46,9 @@
         <activity android:name=".AdminCategoryActivity" />
         <activity android:name=".AdminAddNewProductActivity" />
         <activity android:name=".manageotp" />
-        <activity android:name=".MainActivity"
-            android:theme="@style/Theme.Design.NoActionBar"
-            >
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.Design.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

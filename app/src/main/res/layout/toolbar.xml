@@ -18,6 +18,33 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay">
+            <ImageButton
+                android:id="@+id/phonebutton"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/buttonshape"
+                android:src="@drawable/call_24"
+                android:layout_gravity="end"
+                android:layout_marginEnd="10dp"
+                android:text="call"/>
+            <ImageButton
+                android:id="@+id/whatsappbutton"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_whg2"
+                android:background="@drawable/buttonshape"
+                android:layout_gravity="end"
+                android:layout_marginEnd="7dp"
+                android:text="Whatsapp"/>
+            <ImageButton
+                android:id="@+id/vid"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_baseline_video_library_24"
+                android:background="@drawable/buttonshape"
+                android:layout_gravity="end"
+                android:layout_marginEnd="7dp"
+              />
 
         </androidx.appcompat.widget.Toolbar>
 
