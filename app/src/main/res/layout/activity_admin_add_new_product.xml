@@ -6,11 +6,35 @@
     android:layout_height="match_parent"
     tools:context=".AdminAddNewProductActivity">
     <ImageView
-        android:id="@+id/select_product_image"
-        android:layout_width="350dp"
-        android:layout_height="200dp"
+        android:id="@+id/select_product_image1"
+        android:layout_width="240dp"
+        android:layout_height="80dp"
         android:cropToPadding="false"
         android:scaleType="centerCrop"
+        android:src="@drawable/select_product_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        />
+
+    <ImageView
+        android:id="@+id/select_product_image2"
+        android:layout_width="240dp"
+        android:layout_height="80dp"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"
+        android:layout_below="@+id/select_product_image1"
+        android:src="@drawable/select_product_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        />
+
+    <ImageView
+        android:id="@+id/select_product_image3"
+        android:layout_width="240dp"
+        android:layout_height="80dp"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"
+        android:layout_below="@+id/select_product_image2"
         android:src="@drawable/select_product_image"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
@@ -20,7 +44,7 @@
         android:id="@+id/product_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/select_product_image"
+        android:layout_below="@+id/select_product_image3"
         android:layout_marginLeft="45dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="45dp"

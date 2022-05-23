@@ -33,11 +33,11 @@ import java.util.HashMap;
 public class AdminAddNewProductActivity extends AppCompatActivity {
     private String CategoryName, Description, Price, Pname, saveCurrentDate, saveCurrentTime;
     private Button AddNewProductButton;
-    private ImageView InputProductImage;
+    private ImageView InputProductImage1 , InputProductImage2 ,InputProductImage3;
     private EditText InputProductName, InputProductDescription, InputProductPrice;
-    private static final int GalleryPick = 1;
-    private Uri ImageUri;
-    private String productRandomKey, downloadImageUrl;
+    private static final int GalleryPick1 = 1, GalleryPick2 = 2 , GalleryPick3 = 3;
+    private Uri ImageUri1 , ImageUri2, ImageUri3;
+    private String productRandomKey, downloadImageUrl1 , downloadImageUrl2 ,downloadImageUrl3;
     private StorageReference ProductImagesRef;
     private DatabaseReference ProductsRef;
     private ProgressDialog loadingBar;
@@ -56,21 +56,38 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
 
 
         AddNewProductButton = (Button) findViewById(R.id.add_new_product);
-        InputProductImage = (ImageView) findViewById(R.id.select_product_image);
+        InputProductImage1 = (ImageView) findViewById(R.id.select_product_image1);
+        InputProductImage2 = (ImageView) findViewById(R.id.select_product_image2);
+        InputProductImage3 = (ImageView) findViewById(R.id.select_product_image3);
         InputProductName = (EditText) findViewById(R.id.product_name);
         InputProductDescription = (EditText) findViewById(R.id.product_description);
         InputProductPrice = (EditText) findViewById(R.id.product_price);
         loadingBar = new ProgressDialog(this);
 
 
-        InputProductImage.setOnClickListener(new View.OnClickListener() {
+        InputProductImage1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
             {
-                OpenGallery();
+                OpenGallery(GalleryPick1);
             }
         });
 
+        InputProductImage2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                OpenGallery(GalleryPick2);
+            }
+        });
+
+        InputProductImage3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                OpenGallery(GalleryPick3);
+            }
+        });
 
         AddNewProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,28 +99,38 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
     }
 
 
-    private void OpenGallery(){
+    private void OpenGallery(int GalleryCode){
         Intent galleryIntent = new Intent();
         galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
         galleryIntent.setType("image/*");
-        startActivityForResult(galleryIntent, GalleryPick);
+        startActivityForResult(galleryIntent, GalleryCode);
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode==GalleryPick  &&  resultCode==RESULT_OK  &&  data!=null)
+        if (resultCode==RESULT_OK  &&  data!=null)
         {
-            ImageUri = data.getData();
-            InputProductImage.setImageURI(ImageUri);
+            if(requestCode==GalleryPick1) {
+                ImageUri1 = data.getData();
+                InputProductImage1.setImageURI(ImageUri1);
+            }
+            else if(requestCode==GalleryPick2 ) {
+                ImageUri2 = data.getData();
+                InputProductImage2.setImageURI(ImageUri2);
+            }
+            else {
+                ImageUri3 = data.getData();
+                InputProductImage3.setImageURI(ImageUri3);
+            }
         }
     }
     private void ValidateProductData() {
         Description = InputProductDescription.getText().toString();
         Price = InputProductPrice.getText().toString();
         Pname = InputProductName.getText().toString();
-        if (ImageUri == null)
+        if (ImageUri1 == null || ImageUri2 == null || ImageUri3 == null)
         {
             Toast.makeText(this, "Product image is mandatory...", Toast.LENGTH_SHORT).show();
         }
@@ -142,7 +169,10 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
 
         productRandomKey = saveCurrentDate + saveCurrentTime;
 
+        doSomething(ImageUri1);
+    }
 
+    private void doSomething(Uri ImageUri){
         final StorageReference filePath = ProductImagesRef.child(ImageUri.getLastPathSegment() + productRandomKey + ".jpg");
 
         final UploadTask uploadTask = filePath.putFile(ImageUri);
@@ -167,7 +197,12 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
 
                         }
 
-                        downloadImageUrl = filePath.getDownloadUrl().toString();
+                        if(ImageUri == ImageUri1)
+                            downloadImageUrl1 = filePath.getDownloadUrl().toString();
+                        else if(ImageUri == ImageUri2)
+                            downloadImageUrl2 = filePath.getDownloadUrl().toString();
+                        else
+                            downloadImageUrl3 = filePath.getDownloadUrl().toString();
                         return filePath.getDownloadUrl();
                     }
                 }).addOnCompleteListener(new OnCompleteListener<Uri>() {
@@ -175,17 +210,25 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Uri> task) {
                         if (task.isSuccessful())
                         {
-                            downloadImageUrl = task.getResult().toString();
-
                             Toast.makeText(AdminAddNewProductActivity.this, "got the Product image Url Successfully...", Toast.LENGTH_SHORT).show();
+                            if(ImageUri == ImageUri1) {
+                                downloadImageUrl1 = task.getResult().toString();
+                                doSomething(ImageUri2);
+                            }
+                            else if(ImageUri == ImageUri2) {
+                                downloadImageUrl2 = task.getResult().toString();
+                                doSomething(ImageUri3);
+                            }
+                            else {
+                                downloadImageUrl3 = task.getResult().toString();
+                                SaveProductInfoToDatabase();
+                            }
 
-                            SaveProductInfoToDatabase();
                         }
                     }
                 });
             }
         });
-
     }
     private void SaveProductInfoToDatabase()
     {
@@ -194,7 +237,9 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         productMap.put("date", saveCurrentDate);
         productMap.put("time", saveCurrentTime);
         productMap.put("description", Description);
-        productMap.put("image", downloadImageUrl);
+        productMap.put("image1", downloadImageUrl1);
+        productMap.put("image2", downloadImageUrl2);
+        productMap.put("image3", downloadImageUrl3);
         productMap.put("category", CategoryName);
         productMap.put("price", Price);
         productMap.put("pname", Pname);

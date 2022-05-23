@@ -3,16 +3,18 @@ package com.cattleguru.shopping.Model;
 
 
 public class Products {
-    private String pname, description, price, image, category, pid, date, time;
+    private String pname, description, price, image1, image2, image3 ,category, pid, date, time;
     public Products()
     {
 
     }
-    public Products(String pname, String description, String price, String image, String category, String pid, String date, String time) {
+    public Products(String pname, String description, String price, String image1, String image2, String image3, String category, String pid, String date, String time) {
         this.pname = pname;
         this.description = description;
         this.price = price;
-        this.image = image;
+        this.image1 = image1;
+        this.image2 = image2;
+        this.image3 = image3;
         this.category = category;
         this.pid = pid;
         this.date = date;
@@ -42,12 +44,28 @@ public class Products {
         this.price = price;
     }
 
-    public String getImage() {
-        return image;
+    public String getImage1() {
+        return image1;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImage1(String image1) {
+        this.image1 = image1;
+    }
+
+    public String getImage2() {
+        return image2;
+    }
+
+    public void setImage2(String image1) {
+        this.image2 = image2;
+    }
+
+    public String getImage3() {
+        return image3;
+    }
+
+    public void setImage3(String image3) {
+        this.image3 = image3;
     }
 
     public String getCategory() {
