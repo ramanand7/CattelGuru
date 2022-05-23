@@ -52,7 +52,7 @@ public class SplashScreen extends AppCompatActivity {
         {
             if (!TextUtils.isEmpty(UserPhoneKey)  &&  !TextUtils.isEmpty(UserPasswordKey))
             {
-                AllowAccess(UserPhoneKey, UserPasswordKey);
+                //AllowAccess(UserPhoneKey, UserPasswordKey);
                f=2;
             }
         }
@@ -72,44 +72,44 @@ public class SplashScreen extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-    private void AllowAccess(final String phone, final String password)
-    {
-        final DatabaseReference RootRef;
-        RootRef = FirebaseDatabase.getInstance().getReference();
-        RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.child("Users").child(phone).exists()){
-
-                    Users usersData = dataSnapshot.child("Users").child(phone).getValue(Users.class);
-                    if (usersData.getPhone().equals(phone))
-                    {
-                        if (usersData.getPassword().equals(password))
-                        {
-                            Toast.makeText(SplashScreen.this, "Please wait, you are already logged in...", Toast.LENGTH_SHORT).show();
-
-
-                            Intent intent = new Intent(SplashScreen.this, HomeActivity.class);
-                            Prevalent.currentOnlineUser = usersData;
-                            startActivity(intent);
-
-                        }
-                        else {
-
-                            Toast.makeText(SplashScreen.this,"Password is incorrect",Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }
-                else {
-                    Toast.makeText(SplashScreen.this, "Account with this " + phone + " number do not exists.", Toast.LENGTH_SHORT).show();
-
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
+//    private void AllowAccess(final String phone, final String password)
+//    {
+//        final DatabaseReference RootRef;
+//        RootRef = FirebaseDatabase.getInstance().getReference();
+//        RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                if (dataSnapshot.child("Users").child(phone).exists()){
+//
+//                    Users usersData = dataSnapshot.child("Users").child(phone).getValue(Users.class);
+//                    if (usersData.getPhone().equals(phone))
+//                    {
+//                        if (usersData.getPassword().equals(password))
+//                        {
+//                            Toast.makeText(SplashScreen.this, "Please wait, you are already logged in...", Toast.LENGTH_SHORT).show();
+//
+//
+//                            Intent intent = new Intent(SplashScreen.this, HomeActivity.class);
+//                            Prevalent.currentOnlineUser = usersData;
+//                            startActivity(intent);
+//
+//                        }
+//                        else {
+//
+//                            Toast.makeText(SplashScreen.this,"Password is incorrect",Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                }
+//                else {
+//                    Toast.makeText(SplashScreen.this, "Account with this " + phone + " number do not exists.", Toast.LENGTH_SHORT).show();
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+//    }
 }

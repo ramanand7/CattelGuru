@@ -8,11 +8,14 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.cattleguru.shopping.Model.Users;
+import com.cattleguru.shopping.Prevalent.Prevalent;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -25,7 +28,8 @@ import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
     private Button CreateAccountButton;
-    private EditText InputName, InputPhoneNumber, InputPassword;
+    private EditText InputName, InputAddress;
+    private TextView InputPhoneNumber;
     private ProgressDialog loadingBar;
     String phonenumber ;
     @Override
@@ -34,13 +38,12 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         CreateAccountButton = (Button) findViewById(R.id.register_btn);
         InputName = (EditText) findViewById(R.id.register_username_input);
-        InputPassword = (EditText) findViewById(R.id.register_password_input);
-        InputPhoneNumber = (EditText) findViewById(R.id.register_phone_number_input);
+        InputAddress = (EditText) findViewById(R.id.register_address_input);
+        InputPhoneNumber =  findViewById(R.id.register_phone_number_input);
 
         loadingBar = new ProgressDialog(this);
         phonenumber=getIntent().getStringExtra("mobile").toString();
-        String ph = phonenumber.substring(3);
-        InputPhoneNumber.setText(ph);
+        InputPhoneNumber.setText(phonenumber);
         CreateAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,8 +53,8 @@ public class RegisterActivity extends AppCompatActivity {
     }
     private void CreateAccount(){
         String name = InputName.getText().toString();
-        String phone = InputPhoneNumber.getText().toString();
-        String password = InputPassword.getText().toString();
+        String phone = phonenumber;
+        String address = InputAddress.getText().toString();
         if (TextUtils.isEmpty(name))
         {
             Toast.makeText(this, "Please write your name...", Toast.LENGTH_SHORT).show();
@@ -60,7 +63,7 @@ public class RegisterActivity extends AppCompatActivity {
         {
             Toast.makeText(this, "Please write your phone number...", Toast.LENGTH_SHORT).show();
         }
-        else if (TextUtils.isEmpty(password))
+        else if (TextUtils.isEmpty(address))
         {
             Toast.makeText(this, "Please write your password...", Toast.LENGTH_SHORT).show();
         }
@@ -71,12 +74,12 @@ public class RegisterActivity extends AppCompatActivity {
             loadingBar.setCanceledOnTouchOutside(false);
             loadingBar.show();
 
-            ValidatephoneNumber(name, phone, password);
+            ValidatephoneNumber(name, phone, address);
         }
 
     }
 
-    private void ValidatephoneNumber(final String name, final String phone,final String password) {
+    private void ValidatephoneNumber(final String name, final String phone,final String address) {
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -85,8 +88,10 @@ public class RegisterActivity extends AppCompatActivity {
                 if (!(dataSnapshot.child("Users").child(phone).exists())){
                     HashMap<String, Object> userdataMap = new HashMap<>();
                     userdataMap.put("phone", phone);
-                    userdataMap.put("password", password);
+                    userdataMap.put("address", address);
                     userdataMap.put("name", name);
+                    Users user = new Users(name, phone , null, address);
+                    Prevalent.currentOnlineUser= user ;
                     RootRef.child("Users").child(phone).updateChildren(userdataMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
@@ -95,8 +100,9 @@ public class RegisterActivity extends AppCompatActivity {
                             {
                                 Toast.makeText(RegisterActivity.this, "Congratulations, your account has been created.", Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
-                                Intent intent = new Intent(RegisterActivity.this, com.cattleguru.shopping.LoginActivity.class);
+                                Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
                                 startActivity(intent);
+                                finish();
                             }
                             else
                             {
@@ -112,8 +118,8 @@ public class RegisterActivity extends AppCompatActivity {
                 else {
                     Toast.makeText(RegisterActivity.this, "This " + phone + " already exists.", Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();
-                    Toast.makeText(RegisterActivity.this, "Please try again using another phone number.", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(RegisterActivity.this, com.cattleguru.shopping.MainActivity.class);
+                    //Toast.makeText(RegisterActivity.this, "Please try again using another phone number.", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
                     startActivity(intent);
                 }
             }

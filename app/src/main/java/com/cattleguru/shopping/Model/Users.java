@@ -1,16 +1,15 @@
 package com.cattleguru.shopping.Model;
 
 public class Users {
-    private String name, phone, password, image, address;
+    private String name, phone, image, address;
     public Users()
     {
 
     }
 
-    public Users(String name, String phone, String password, String image, String address) {
+    public Users(String name, String phone, String image, String address) {
         this.name = name;
         this.phone = phone;
-        this.password = password;
         this.image = image;
         this.address = address;
     }
@@ -29,14 +28,6 @@ public class Users {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getImage() {
