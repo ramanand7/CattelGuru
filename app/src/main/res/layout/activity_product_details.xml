@@ -10,8 +10,8 @@
     <com.smarteist.autoimageslider.SliderView
         android:id="@+id/slider"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginTop="50dp"
+        android:layout_height="280dp"
+        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
         app:sliderAnimationDuration="600"
         app:sliderAutoCycleDirection="back_and_forth"
@@ -78,14 +78,28 @@
     </com.cepheuen.elegantnumberbutton.view.ElegantNumberButton>
 
     <Button
-        android:id="@+id/pd_add_to_cart_button"
+        android:id="@+id/buy_now"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
         android:layout_margin="15dp"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@id/number_btn"
+        android:text="Buy Now"
+        android:textColor="@android:color/white"
+        android:textSize="18dp"
+        />
+
+    <Button
+        android:id="@+id/pd_add_to_cart_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_below="@id/buy_now"
         android:text="Add to Cart"
         android:textColor="@android:color/white"
         android:textSize="18dp"
         />
+
 </RelativeLayout>
