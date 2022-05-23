@@ -8,12 +8,100 @@
     tools:context=".HomeActivity"
     tools:showIn="@layout/toolbar">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_menu"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        >
-    </androidx.recyclerview.widget.RecyclerView>
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/whatsappbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="20dp"
+            android:backgroundTint="#29D53A"
+            android:layout_margin="8dp"
+            android:layout_gravity="center"
+            app:cardCornerRadius="8dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="6dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_whg2"
+                    android:padding="4dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:textColor="#000000"
+                    android:text="Order by whatsapp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/phonebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="20dp"
+            android:backgroundTint="#29D53A"
+            android:layout_marginBottom="8dp"
+            android:layout_gravity="center"
+            app:cardCornerRadius="8dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="6dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/call_24"
+                    android:padding="4dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:textColor="#000000"
+                    android:text="Order by Call"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/vid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="20dp"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="#29D53A"
+            android:layout_gravity="center"
+            app:cardCornerRadius="8dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="6dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_baseline_video_library_24"
+                    android:padding="4dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:padding="4dp"
+                    android:text="See how we work"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical" />
+    </LinearLayout>
+
 
 </RelativeLayout>

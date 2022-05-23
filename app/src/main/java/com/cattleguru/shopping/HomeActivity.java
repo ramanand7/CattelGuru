@@ -46,9 +46,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     TextView textView;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-    ImageButton phonebutn;
-    ImageButton whatbutton;
-    ImageButton vidbutn;
+    View phonebutn;
+    View whatbutton;
+    View vidbutn;
     RecyclerView recview;
 
     @Override
