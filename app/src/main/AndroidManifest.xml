@@ -18,6 +18,9 @@
             android:name=".CreateOrderActivity"
             android:exported="false" />
         <activity
+            android:name=".videoactivity"
+            android:exported="false" />
+        <activity
             android:name=".SplashScreen"
             android:exported="true">
             <intent-filter>
