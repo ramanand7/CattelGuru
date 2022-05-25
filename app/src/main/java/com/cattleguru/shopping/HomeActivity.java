@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -66,6 +67,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         vidbutn = findViewById(R.id.vid);
         androidx.appcompat.widget.Toolbar toolbar = (androidx.appcompat.widget.Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Cattle GURU");
+        toolbar.setSubtitleTextColor(Color.BLACK);
         setSupportActionBar(toolbar);
 
         navigationView.bringToFront();
@@ -145,7 +147,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     {
                         holder.txtProductName.setText(model.getPname());
                         holder.txtProductDescription.setText(model.getDescription());
-                        holder.txtProductPrice.setText("Price = " + model.getPrice() + "Rs.");
+                        holder.txtProductPrice.setText("मूल्य  - " + model.getPrice() );
                         Picasso.get().load(model.getImage1()).into(holder.imageView);
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override

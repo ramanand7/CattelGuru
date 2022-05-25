@@ -41,6 +41,7 @@ public class manageotp extends AppCompatActivity
    String phonenumber, parentDatabaseName;
    String otpid;
    FirebaseAuth mAuth;
+    private String parentDbName = "Users";
     private ProgressDialog loadingBar;
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -61,7 +62,8 @@ public class manageotp extends AppCompatActivity
         FirebaseAppCheck firebaseAppCheck = FirebaseAppCheck.getInstance();
         firebaseAppCheck.installAppCheckProviderFactory(SafetyNetAppCheckProviderFactory.getInstance());
         initiateotp();
-
+        Paper.init(this);
+        parentDbName = "Users";
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -147,6 +149,8 @@ public class manageotp extends AppCompatActivity
                     Toast.makeText(manageotp.this, "Please try again using another phone number.", Toast.LENGTH_SHORT).show();
                     if(parentDatabaseName.equals("Users")) {
                         Intent intent = new Intent(manageotp.this, com.cattleguru.shopping.HomeActivity.class);
+                        Paper.book().write(Prevalent.UserPhoneKey,phonenumber);
+                        Paper.book().write("ParentDatabaseName" ,parentDbName);
                         startActivity(intent);
                         finish();
                     }
@@ -161,6 +165,41 @@ public class manageotp extends AppCompatActivity
                     intent.putExtra("mobile",phonenumber);
                     startActivity(intent);
                     finish();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void AllowAccess(final String phone)
+    {
+        final DatabaseReference RootRef;
+        RootRef = FirebaseDatabase.getInstance().getReference();
+        RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.child("Users").child(phone).exists()){
+
+                    Users usersData = dataSnapshot.child("Users").child(phone).getValue(Users.class);
+                    if (usersData.getPhone().equals(phone))
+                    {
+
+                        Toast.makeText(manageotp.this, "Please wait, you are already logged in...", Toast.LENGTH_SHORT).show();
+
+
+                        Intent intent = new Intent(manageotp.this, HomeActivity.class);
+                        Prevalent.currentOnlineUser = usersData;
+                        startActivity(intent);
+
+                    }
+                }
+                else {
+                    Toast.makeText(manageotp.this, "Account with this " + phone + " number do not exists.", Toast.LENGTH_SHORT).show();
+
                 }
             }
 
