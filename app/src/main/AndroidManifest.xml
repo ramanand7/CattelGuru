@@ -32,7 +32,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".afterjoinnow"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".HomeActivity"
@@ -41,7 +41,6 @@
         <activity android:name=".SearchProductsActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".ProductDetailsActivity" />
-        <activity android:name=".LoginActivity" />
         <activity android:name=".ConfirmFinalOrderActivity" />
         <activity android:name=".CartActivity" />
         <activity android:name=".AdminUserProductsActivity" />
@@ -51,15 +50,6 @@
         <activity android:name=".AdminHomeActivity" />
         <activity android:name=".AdminAddNewProductActivity" />
         <activity android:name=".manageotp" />
-        <activity
-            android:name=".MainActivity"
-            android:theme="@style/Theme.Design.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />

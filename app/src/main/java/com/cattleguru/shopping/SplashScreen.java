@@ -1,26 +1,16 @@
 package com.cattleguru.shopping;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Toast;
 
-import com.cattleguru.shopping.Model.Users;
 import com.cattleguru.shopping.Prevalent.Prevalent;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import io.paperdb.Paper;
 
@@ -68,48 +58,8 @@ public class SplashScreen extends AppCompatActivity {
     }
     private void sendToLogin()
     {
-        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
         finish();
     }
-//    private void AllowAccess(final String phone, final String password)
-//    {
-//        final DatabaseReference RootRef;
-//        RootRef = FirebaseDatabase.getInstance().getReference();
-//        RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                if (dataSnapshot.child("Users").child(phone).exists()){
-//
-//                    Users usersData = dataSnapshot.child("Users").child(phone).getValue(Users.class);
-//                    if (usersData.getPhone().equals(phone))
-//                    {
-//                        if (usersData.getPassword().equals(password))
-//                        {
-//                            Toast.makeText(SplashScreen.this, "Please wait, you are already logged in...", Toast.LENGTH_SHORT).show();
-//
-//
-//                            Intent intent = new Intent(SplashScreen.this, HomeActivity.class);
-//                            Prevalent.currentOnlineUser = usersData;
-//                            startActivity(intent);
-//
-//                        }
-//                        else {
-//
-//                            Toast.makeText(SplashScreen.this,"Password is incorrect",Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//                }
-//                else {
-//                    Toast.makeText(SplashScreen.this, "Account with this " + phone + " number do not exists.", Toast.LENGTH_SHORT).show();
-//
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-//    }
 }

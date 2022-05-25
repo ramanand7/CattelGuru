@@ -32,6 +32,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.concurrent.TimeUnit;
 
+import io.paperdb.Paper;
+
 public class manageotp extends AppCompatActivity
 {
    EditText t2;
@@ -53,6 +55,7 @@ public class manageotp extends AppCompatActivity
         b2=(Button)findViewById(R.id.b2);
         mAuth=FirebaseAuth.getInstance();
 
+        //Paper.init(this);
         loadingBar = new ProgressDialog(this);
         FirebaseApp.initializeApp(this);
         FirebaseAppCheck firebaseAppCheck = FirebaseAppCheck.getInstance();
@@ -118,6 +121,9 @@ public class manageotp extends AppCompatActivity
                             loadingBar.setMessage("Please wait...");
                             loadingBar.setCanceledOnTouchOutside(false);
                             loadingBar.show();
+                            String phone = phonenumber.substring(3);
+                            Paper.book().write("mobile",phone);
+                            Paper.book().write("ParentDatabaseName",parentDatabaseName);
                             ValidatephoneNumber();
 
                         } else {
@@ -135,6 +141,7 @@ public class manageotp extends AppCompatActivity
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if ((dataSnapshot.child(parentDatabaseName).child(phonenumber).exists())){
                     Users usersData = dataSnapshot.child(parentDatabaseName).child(phonenumber).getValue(Users.class);
+                    Paper.book().write("currentOnlineUser",usersData);
                     Prevalent.currentOnlineUser = usersData;
                     Toast.makeText(manageotp.this, "This " + phonenumber + " already exists.", Toast.LENGTH_SHORT).show();
                     Toast.makeText(manageotp.this, "Please try again using another phone number.", Toast.LENGTH_SHORT).show();
