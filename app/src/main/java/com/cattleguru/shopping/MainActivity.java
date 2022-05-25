@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
     CountryCodePicker ccp;
     EditText t1;
-    Button b1;
-    private TextView AdminLink, NotAdminLink;
+    View b1;
+    private View AdminLink, NotAdminLink;
     private String parentDatabaseName = "Users";
     private CheckBox chkBoxRememberMe;
     @Override
@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.after_join_now);
 
         Paper.init(this);
-        AdminLink = (TextView) findViewById(R.id.admin_panel_link);
-        NotAdminLink = (TextView) findViewById(R.id.not_admin_panel_link);
+        AdminLink =  findViewById(R.id.admin_panel_link);
+        //NotAdminLink = (TextView) findViewById(R.id.not_admin_panel_link);
 
         final DatabaseReference RootRef;
         String phone = Paper.book().read("mobile");
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
             parentDatabaseName= "Users";
         t1=(EditText)findViewById(R.id.t1);
         t1.setText(phone);
-        b1=(Button)findViewById(R.id.b1);
+        b1= findViewById(R.id.b1);
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,22 +74,27 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                b1.setText("Login Admin");
-                AdminLink.setVisibility(View.INVISIBLE);
-                NotAdminLink.setVisibility(View.VISIBLE);
+                //b1.setText("Login Admin");
+                //AdminLink.setVisibility(View.INVISIBLE);
+                //NotAdminLink.setVisibility(View.VISIBLE);
                 parentDatabaseName = "Admins";
+                Intent intent = new Intent(MainActivity.this, manageotp.class);
+                intent.putExtra("mobile",t1.getText().toString());
+                intent.putExtra("parentDatabaseName",parentDatabaseName);
+                startActivity(intent);
+                finish();
             }
         });
-        NotAdminLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
-                b1.setText("Login");
-                AdminLink.setVisibility(View.VISIBLE);
-                NotAdminLink.setVisibility(View.INVISIBLE);
-                parentDatabaseName = "Users";
-            }
-        });
+//        NotAdminLink.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view)
+//            {
+//                b1.setText("Login");
+//                AdminLink.setVisibility(View.VISIBLE);
+//                NotAdminLink.setVisibility(View.INVISIBLE);
+//                parentDatabaseName = "Users";
+//            }
+//        });
 
 
         //RootRef = FirebaseDatabase.getInstance().getReference();
