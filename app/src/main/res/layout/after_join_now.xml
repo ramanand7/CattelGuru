@@ -64,6 +64,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:background="#e0e0e0"
                     android:layout_marginTop="20dp">
 
                     <TextView
@@ -82,7 +85,7 @@
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColorHint="#FFB3B3B3">
+                        android:textColorHint="#9D9FA0">
 
                         <EditText
                             android:id="@+id/t1"
