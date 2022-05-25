@@ -43,6 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         loadingBar = new ProgressDialog(this);
         phonenumber=getIntent().getStringExtra("mobile").toString();
+        phonenumber = phonenumber.substring(3);
         InputPhoneNumber.setText(phonenumber);
         CreateAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -27,162 +27,130 @@
                     android:background="@color/white"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_marginTop="30dp"
+
+                    <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="160dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="26dp"
+                        android:text="Login"
+                        android:textAlignment="center"
+                        android:textColor="#000000"
+                        android:textSize="36sp"/>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
                         android:src="@drawable/logo" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="60dp"
-                        android:layout_marginRight="30dp"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginBottom="30dp"
-                        android:text="बेस्ट क्वालिटी का खल - बिनोला अपने घर पर प्राप्त करें।"
-                        android:textAlignment="center"
-                        android:textColor="#000000"
-                        android:textStyle="bold"
-                        android:textSize="28sp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginRight="30dp"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginBottom="30dp"
-                        android:text="मोबाइल नंबर डालें"
-                        android:textAlignment="center"
-                        android:textColor="#000000"
-                        android:textSize="32sp"/>
-
+                    <View
+                        android:layout_width="80dp"
+                        android:layout_height="6dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="26dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/white" />
                 </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="20dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="+91"
-                        android:textColor="#008000"
-                        android:textStyle="bold"
-                        android:textSize="32dp"
-                        android:layout_marginLeft="24dp"
-                        android:layout_marginRight="20dp"
-                        android:layout_gravity="center_vertical"
-                        />
-
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColorHint="#FFB3B3B3">
-
-                        <EditText
-                            android:id="@+id/t1"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:hint="यहाँ नंबर डालें"
-                            android:maxLines="1"
-                            android:inputType="number"
-                            android:layout_marginRight="24dp"
-                            android:textColor="@android:color/black"
-                            android:textColorHint="@android:color/black"
-                            android:textSize="24sp" />
-                    </com.google.android.material.textfield.TextInputLayout>
-                </LinearLayout>
-
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content">-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/admin_panel_link"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="I'm an Admin?"-->
-<!--                        android:textColor="@color/colorPrimaryDark"-->
-<!--                        android:textSize="20sp"-->
-<!--                        android:textStyle="bold"-->
-<!--                        android:layout_marginLeft="80dp"-->
-<!--                        android:layout_marginEnd="23dp"-->
-<!--                        />-->
-
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/not_admin_panel_link"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="I'm not an Admin?"-->
-<!--                        android:textColor="@color/colorPrimaryDark"-->
-<!--                        android:textSize="20sp"-->
-<!--                        android:textStyle="bold"-->
-<!--                        android:layout_marginLeft="80dp"-->
-<!--                        android:layout_marginStart="25dp"-->
-<!--                        android:visibility="invisible"-->
-<!--                        />-->
-<!--                </LinearLayout>-->
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#008000"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:backgroundTint="@color/white"
                     app:cardCornerRadius="16dp"
+                    app:cardElevation="20dp"
                     app:cardUseCompatPadding="true"
-                    app:contentPadding="8dp">
+                    app:contentPadding="16dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center">
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:orientation="vertical">
+
+<!--                        <TextView-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginTop="16dp"-->
+<!--                            android:layout_marginBottom="24dp"-->
+<!--                            android:text="Login"-->
+<!--                            android:textAlignment="center"-->
+<!--                            android:textColor="#000000"-->
+<!--                            android:textSize="24sp"-->
+<!--                            android:textStyle="bold" />-->
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="आगे बढ़ें"
-                            android:textColor="@color/white"
-                            android:textSize="30dp"
-                            />
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="38dp"
-                            android:layout_marginLeft="10dp"
-                            android:src="@drawable/ic_baseline_arrow_forward_24"/>
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="16dp"
+                            android:text="We wil send you an OTP on this number"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textSize="18sp" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColorHint="#FFB3B3B3">
+
+                            <EditText
+                                android:id="@+id/t1"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:hint="Enter mobile number"
+                                android:maxLines="1"
+                                android:textColor="@android:color/black"
+                                android:textSize="20sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Admin Login"
-                    android:textColor="#1B94EC"
-                    android:layout_marginTop="20dp"
-                    android:textSize="24dp"
-                    android:layout_gravity="center_horizontal"
-                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-<!--                <Button-->
-<!--                    android:id="@+id/b1"-->
-<!--                    android:layout_width="120dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="16dp"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:background="@drawable/buttonshape"-->
-<!--                    android:text="Login"-->
-<!--                    android:textAllCaps="false"-->
-<!--                    android:textColor="#ffffff"-->
-<!--                    android:textSize="24sp" />-->
+                    <TextView
+                        android:id="@+id/admin_panel_link"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="I'm an Admin?"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="80dp"
+                        android:layout_marginEnd="23dp"
+                        />
+
+
+                    <TextView
+                        android:id="@+id/not_admin_panel_link"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="I'm not an Admin?"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="80dp"
+                        android:layout_marginStart="25dp"
+                        android:visibility="invisible"
+                        />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/b1"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/buttonshape"
+                    android:text="Login"
+                    android:textAllCaps="false"
+                    android:textColor="#ffffff"
+                    android:textSize="24sp" />
             </LinearLayout>
 
 
