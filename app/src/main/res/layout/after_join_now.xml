@@ -131,6 +131,7 @@
 <!--                </LinearLayout>-->
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/b1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#008000"
@@ -163,6 +164,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <TextView
+                    android:id="@+id/admin_panel_link"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Admin Login"
