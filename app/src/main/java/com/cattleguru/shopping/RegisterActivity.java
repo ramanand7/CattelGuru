@@ -27,24 +27,23 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
-    private Button CreateAccountButton;
-    private EditText InputName, InputAddress;
-    private TextView InputPhoneNumber;
+    private View CreateAccountButton;
+    private EditText InputName, InputVillage, InputPincode, InputReferralCode;
     private ProgressDialog loadingBar;
     String phonenumber ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        CreateAccountButton = (Button) findViewById(R.id.register_btn);
+        CreateAccountButton = findViewById(R.id.register_btn);
         InputName = (EditText) findViewById(R.id.register_username_input);
-        InputAddress = (EditText) findViewById(R.id.register_address_input);
-        InputPhoneNumber =  findViewById(R.id.register_phone_number_input);
+        InputVillage = (EditText) findViewById(R.id.register_village_input);
+        InputPincode = (EditText) findViewById(R.id.register_pincode_input);
+        InputReferralCode = (EditText) findViewById(R.id.register_referral_code_input);
 
         loadingBar = new ProgressDialog(this);
         phonenumber=getIntent().getStringExtra("mobile").toString();
         phonenumber = phonenumber.substring(3);
-        InputPhoneNumber.setText(phonenumber);
         CreateAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,7 +54,8 @@ public class RegisterActivity extends AppCompatActivity {
     private void CreateAccount(){
         String name = InputName.getText().toString();
         String phone = phonenumber;
-        String address = InputAddress.getText().toString();
+        String address = InputVillage.getText().toString() + " , "+ InputPincode.getText().toString();
+        String referralCode = InputReferralCode.getText().toString();
         if (TextUtils.isEmpty(name))
         {
             Toast.makeText(this, "Please write your name...", Toast.LENGTH_SHORT).show();
@@ -75,12 +75,12 @@ public class RegisterActivity extends AppCompatActivity {
             loadingBar.setCanceledOnTouchOutside(false);
             loadingBar.show();
 
-            ValidatephoneNumber(name, phone, address);
+            ValidatephoneNumber(name, phone, address, referralCode);
         }
 
     }
 
-    private void ValidatephoneNumber(final String name, final String phone,final String address) {
+    private void ValidatephoneNumber(final String name, final String phone,final String address,final String referralCode) {
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -91,7 +91,8 @@ public class RegisterActivity extends AppCompatActivity {
                     userdataMap.put("phone", phone);
                     userdataMap.put("address", address);
                     userdataMap.put("name", name);
-                    Users user = new Users(name, phone , null, address);
+                    userdataMap.put("referralCode", referralCode);
+                    Users user = new Users(name, phone , null, address, referralCode);
                     Prevalent.currentOnlineUser= user ;
                     RootRef.child("Users").child(phone).updateChildren(userdataMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override

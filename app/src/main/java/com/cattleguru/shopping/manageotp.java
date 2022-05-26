@@ -37,7 +37,7 @@ import io.paperdb.Paper;
 public class manageotp extends AppCompatActivity
 {
    EditText t2;
-   Button b2;
+   View b2;
    String phonenumber, parentDatabaseName;
    String otpid;
    FirebaseAuth mAuth;
@@ -53,7 +53,7 @@ public class manageotp extends AppCompatActivity
         parentDatabaseName=getIntent().getStringExtra("parentDatabaseName").toString();
         phonenumber = "+91"+phonenumber;
         t2=(EditText)findViewById(R.id.t2);
-        b2=(Button)findViewById(R.id.b2);
+        b2= findViewById(R.id.b2);
         mAuth=FirebaseAuth.getInstance();
 
         //Paper.init(this);
