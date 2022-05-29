@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.after_join_now);
 
         Paper.init(this);
-        AdminLink =  findViewById(R.id.admin_panel_link);
+       // AdminLink =  findViewById(R.id.admin_panel_link);
         //NotAdminLink = (TextView) findViewById(R.id.not_admin_panel_link);
 
         final DatabaseReference RootRef;
@@ -57,18 +57,18 @@ public class MainActivity extends AppCompatActivity {
             parentDatabaseName= "Users";
         t1=(EditText)findViewById(R.id.t1);
         t1.setText(phone);
-        b1= findViewById(R.id.b1);
+       // b1= findViewById(R.id.b1);
 
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, manageotp.class);
-                intent.putExtra("mobile",t1.getText().toString());
-                intent.putExtra("parentDatabaseName",parentDatabaseName);
-                startActivity(intent);
-                finish();
-            }
-        });
+//        b1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(MainActivity.this, manageotp.class);
+//                intent.putExtra("mobile",t1.getText().toString());
+//                intent.putExtra("parentDatabaseName",parentDatabaseName);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
 
         AdminLink.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -197,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
 
                     Toast.makeText(MainActivity.this, "This " + phone + " already exists.", Toast.LENGTH_SHORT).show();
                     Toast.makeText(MainActivity.this, "Please try again using another phone number.", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(MainActivity.this, com.cattleguru.shopping.MainActivity.class);
+                    Intent intent = new Intent(MainActivity.this, MainActivity.class);
                     startActivity(intent);
                 }
                 else {

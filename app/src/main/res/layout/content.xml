@@ -6,111 +6,187 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".HomeActivity"
-
+    android:background="#ffff"
     android:id="@+id/rell"
     tools:showIn="@layout/toolbar">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
+         app:layout_goneMarginStart="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:layout_marginTop="?attr/actionBarSize"
+            android:layout_marginTop="0dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="252dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:textColor="#000000"
-                    android:text="Direct Order By : "
-                    android:textSize="50dp" />
-
-                <TextView
-                    android:layout_width="255dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="125dp"
-                    android:textColor="#000000"
-                    android:text="Call"
-                    android:textSize="40dp" />
+                android:layout_height="320dp">
 
                 <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="19dp"
+                    android:layout_marginTop="29dp"
+                    android:src="@drawable/check_logo" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="19dp"
+                    android:layout_marginTop="79dp"
+                    android:src="@drawable/check_logo" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="19dp"
+                    android:layout_marginTop="143dp"
+                    android:src="@drawable/check_logo" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="64dp"
+                    android:layout_marginTop="28dp"
+                    android:text="24 घंटे में फ्री होम डिलीवरी !"
+                    android:textColor="#000000"
+                    android:textSize="25dp" />
+
+                <androidx.cardview.widget.CardView
                     android:id="@+id/phonebutton"
-                    android:layout_width="100dp"
+                    android:layout_width="363dp"
                     android:layout_height="50dp"
+                    android:layout_above="@+id/whatsappbutton"
+                    android:layout_alignParentStart="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
                     android:layout_gravity="end"
-                    android:layout_marginStart="7dp"
+                    android:layout_marginStart="25dp"
                     android:layout_marginTop="7dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginBottom="129dp"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginBottom="5dp"
                     android:background="@drawable/buttonshape"
                     android:src="@drawable/call_24"
-                    android:text="call" />
+                    android:text="call"
+                    app:cardCornerRadius="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#2D8324">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/phsmalllogo" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="fill_parent"
+                            android:gravity="center"
+                            android:text="फ़ोन कॉल द्वारा ऑर्डर करें"
+                            android:textColor="#ffff"
+                            android:textSize="20dp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
                 <TextView
-                    android:layout_width="255dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="67dp"
+                    android:layout_width="335dp"
+                    android:layout_height="55dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="64dp"
+                    android:layout_marginTop="78dp"
+                    android:layout_marginEnd="12dp"
+                    android:text="कैश ऑन डिलीवरी उपलब्ध है"
                     android:textColor="#000000"
-                    android:text="Whatsapp"
-                    android:textSize="40dp" />
+                    android:textSize="25dp" />
 
-                <ImageView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/whatsappbutton"
-                    android:layout_width="100dp"
+                    android:layout_width="363dp"
                     android:layout_height="50dp"
+                    android:layout_alignParentStart="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
                     android:layout_gravity="end"
-                    android:layout_marginStart="7dp"
+                    android:layout_marginStart="25dp"
                     android:layout_marginTop="7dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="70dp"
-                    android:background="@drawable/buttonshape"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="#fff"
                     android:src="@drawable/ic_whg2"
-                    android:text="Whatsapp"></ImageView>
+                    app:cardCornerRadius="10dp">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#2D8324">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/smallwhico" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="व्हाट्सएप द्वारा ऑर्डर करें"
+                            android:textColor="#ffff"
+                            android:textSize="20dp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
                 <TextView
-                    android:layout_width="255dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="9dp"
+                    android:layout_width="382dp"
+                    android:layout_height="45dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="64dp"
+                    android:layout_marginTop="139dp"
+                    android:layout_marginEnd="-35dp"
+                    android:text="सबसे अच्छी गुणवत्ता गारंटी है"
                     android:textColor="#000000"
-                    android:text="See Work "
-                    android:textSize="40dp" />
+                    android:textSize="25dp" />
 
-                <ImageView
+                   <ImageView
                     android:id="@+id/vid"
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
+                    android:layout_width="363dp"
+                    android:layout_height="0dp"
+                    android:layout_alignParentStart="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
                     android:layout_gravity="end"
-                    android:layout_marginStart="7dp"
+                    android:layout_marginStart="25dp"
                     android:layout_marginTop="7dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginBottom="55dp"
                     android:background="@drawable/buttonshape"
                     android:src="@drawable/ic_baseline_video_library_24" />
             </RelativeLayout>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_menu"
                 android:layout_width="match_parent"
-                android:layout_height="608dp"
+                android:layout_height="600dp"
                 android:scrollbars="vertical">
 
             </androidx.recyclerview.widget.RecyclerView>

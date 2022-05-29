@@ -21,11 +21,15 @@
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:layout_marginEnd="-65dp"
+        android:layout_marginRight="-65dp"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/header"
+        android:theme="@style/DrawerArrowStyle"
+        android:background="#ffff"
         app:menu="@menu/main_menu" />
   <!--  <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recview"

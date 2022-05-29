@@ -3,26 +3,64 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/apkayrefrel"
+            android:icon="@drawable/apkayrefrel"
+            android:title="आपके रेफरल"
+            android:iconTint="@android:color/black">
+        </item>
+        <item
+            android:id="@+id/apkayorders"
+            android:icon="@drawable/apkayorders"
+            android:title="आपके ऑर्डर"
+            android:iconTint="@android:color/black">
+        </item>
+        <item
+            android:id="@+id/deliveryadddress"
+            android:icon="@drawable/deliveryaddress"
+            android:title="डिलीवरी एड्रेस"
+            android:iconTint="@android:color/black">
+        </item>
+        <item
+            android:id="@+id/mobilebadlay"
+            android:icon="@drawable/mobilebadlay"
+            android:title="मोबाइल नंबर बदलें"
+            android:iconTint="@android:color/black">
+        </item>
+        <item
+            android:id="@+id/sahiyatakerdr"
+            android:icon="@drawable/sahiyatakendr"
+            android:title="सहायता केंद्र"
+            android:iconTint="@android:color/black">
+        </item>
+        <item
+            android:id="@+id/kanuni"
+            android:icon="@drawable/kanauni"
+            android:title="कानूनी"
+            android:iconTint="@android:color/black">
+        </item>
+        <item
             android:id="@+id/nav_cart"
             android:icon="@drawable/nav_cart"
             android:title="@string/cart_hindi"
-            android:iconTint="@android:color/white"/>
+            android:iconTint="@android:color/black">
+        </item>
+
         <item
             android:id="@+id/nav_search"
             android:icon="@drawable/ic_search"
             android:title="खोजे"
-            android:iconTint="@android:color/white"
+            android:iconTint="@android:color/black"
             />
 
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_person_add"
             android:title="@string/settings_hindi"
-            android:iconTint="@android:color/white"/>
+            android:iconTint="@android:color/black"/>
         <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/logout"
             android:title="@string/logout_hindi"
-            android:iconTint="@android:color/white"/>
+            android:iconTint="@android:color/black"/>
     </group>
 </menu>

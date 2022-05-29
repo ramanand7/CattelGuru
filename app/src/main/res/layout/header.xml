@@ -1,38 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/nav_header_height"
-    android:background="@drawable/farmimage"
-    android:gravity="bottom"
-    android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:layout_height="300dp"
+    android:background="#ffff"
+
+
+
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+    android:paddingTop="10dp"
+    android:theme="@style/AppTheme">
+
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/user_profile_image"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:src="@drawable/profile"
-        android:layout_gravity="center"
-        app:civ_border_width="2dp"
-        app:civ_border_color="@android:color/white"/>
-
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+       android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/profilelogo"
+        app:civ_border_color="@android:color/white"
+        app:civ_border_width="2dp" />
 
     <TextView
         android:id="@+id/user_profile_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="#ffff"
-        android:text="user name"
-        android:gravity="center"
+        android:layout_below="@+id/user_profile_image"
         android:layout_marginLeft="4dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:layout_marginTop="-1dp"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:text="user name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#40AAFA"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/refrelcodetv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_profile_name"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="3dp"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:text="रेफरल कोड - 989898989"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/refrelcodetvinfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/refrelcodetv"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="3dp"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:text="( आपका रेफरल कोड आपका मोबाइल नंबर है )"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:textStyle="italic" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:background="#2CA32E"></View>
+
+</RelativeLayout>
